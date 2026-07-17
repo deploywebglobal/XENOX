@@ -96,7 +96,7 @@ async function handleGoogleLogin() {
  const { data, error } = await sb.auth.signInWithOAuth({
      provider: 'google',
      options: {
-         redirectTo: 'http://127.0.0.1:5500/frontend/dashboard.html'
+         redirectTo: 'https://xenox-chat.pages.dev/dashboard.html'
      }
  })
  if (error) alert(error.message)

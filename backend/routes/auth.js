@@ -33,7 +33,7 @@ router.get('/google', async (req, res) => {
  const { data, error } = await supabase.auth.signInWithOAuth({
  provider: 'google',
  options: {
- redirectTo: 'http://localhost:5500/dashboard.html'
+ redirectTo: 'https://xenox-chat.pages.dev/dashboard.html'
  }
  });
  if (error) return res.status(400).json({ error: error.message });
