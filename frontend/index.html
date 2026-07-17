@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>XENOX — Command Center</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Radar/Grid Background -->
+    <div class="bg-grid"></div>
+    <div class="radar-circle"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">⟁</span> 
+            <span>XENOX</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <button class="nav-btn" onclick="openModal('login')">Log In</button>
+            <button class="btn-primary" onclick="openModal('signup')">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">v2.0.1 · Autonomous Messaging</div>
+            <h1>Never Miss a <br>Customer Message</h1>
+            <p>XENOX uses AI to automatically reply to your WhatsApp and Instagram messages — 24/7, instant, human-like. Deploy your agent in seconds.</p>
+            <div class="hero-actions">
+                <button class="btn-primary btn-large" onclick="openModal('signup')">Deploy Free Agent</button>
+                <button class="btn-secondary btn-large" onclick="openModal('login')">Login to Console</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <div class="feature-content">
+                <h3>WhatsApp Automation</h3>
+                <p>Seamlessly integrate with Meta's API. Auto-reply to every customer query instantly.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <div class="feature-content">
+                <h3>Instagram DM Sync</h3>
+                <p>Never let a DM or comment go unanswered. Our AI handles the conversation flow.</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-content">
+                <h3>Custom AI Persona</h3>
+                <p>Train your AI with specific business rules. It replies exactly how you want it to.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+    <div class="modal" id="authModal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+
+        <!-- Login Form -->
+        <div id="loginForm">
+            <h2>Welcome Back</h2>
+            <p class="modal-sub">Log in to your XENOX console</p>
+            <input type="email" id="loginEmail" placeholder="Email address" />
+            <input type="password" id="loginPassword" placeholder="Password" />
+            <button class="btn-primary btn-full" onclick="handleLogin()">Log In</button>
+            <div class="divider">or</div>
+            <button class="btn-google btn-full" onclick="handleGoogleLogin()">
+                <img src="https://www.google.com/favicon.ico" width="18" alt="Google"/>
+                Continue with Google
+            </button>
+            <p class="switch-auth">Don't have an account? <a onclick="openModal('signup')">Sign Up</a></p>
+            <p class="error-msg" id="loginError"></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupForm" style="display:none">
+            <h2>Create Account</h2>
+            <p class="modal-sub">Start automating your messages today</p>
+            <input type="email" id="signupEmail" placeholder="Email address" />
+            <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" />
+            <button class="btn-primary btn-full" onclick="handleSignup()">Create Account</button>
+            <div class="divider">or</div>
+            <button class="btn-google btn-full" onclick="handleGoogleLogin()">
+                <img src="https://www.google.com/favicon.ico" width="18" alt="Google"/>
+                Continue with Google
+            </button>
+            <p class="switch-auth">Already have an account? <a onclick="openModal('login')">Log In</a></p>
+            <p class="error-msg" id="signupError"></p>
+            <p class="success-msg" id="signupSuccess"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
